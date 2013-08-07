@@ -1,5 +1,5 @@
-<h1>New bet</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', bets_path %>
+<%- model_class = Bet -%>
+<div class="page-header">
+  <h2>Enter your bet!</h2>
+</div>
+<%= render :partial => 'form' %>

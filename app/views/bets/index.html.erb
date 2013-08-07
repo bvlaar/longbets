@@ -1,31 +1,44 @@
-<h1>Listing bets</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Reminder</th>
-    <th>Details</th>
-    <th>Sent</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @bets.each do |bet| %>
-  <tr>
-    <td><%= bet.name %></td>
-    <td><%= bet.email %></td>
-    <td><%= bet.reminder %></td>
-    <td><%= bet.details %></td>
-    <td><%= bet.sent %></td>
-    <td><%= link_to 'Show', bet %></td>
-    <td><%= link_to 'Edit', edit_bet_path(bet) %></td>
-    <td><%= link_to 'Destroy', bet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Bet -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:reminder) %></th>
+      <th><%= model_class.human_attribute_name(:details) %></th>
+      <th><%= model_class.human_attribute_name(:sent) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bets.each do |bet| %>
+      <tr>
+        <td><%= link_to bet.id, bet_path(bet) %></td>
+        <td><%= bet.name %></td>
+        <td><%= bet.email %></td>
+        <td><%= bet.reminder %></td>
+        <td><%= bet.details %></td>
+        <td><%= bet.sent %></td>
+        <td><%=l bet.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_bet_path(bet), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      bet_path(bet),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Bet', new_bet_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_bet_path,
+            :class => 'btn btn-primary' %>
