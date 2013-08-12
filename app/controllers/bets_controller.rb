@@ -1,4 +1,8 @@
 class BetsController < ApplicationController
+
+  # Ensure admin is logged in to view index
+  before_filter :check_privileges!, only: [:index, :show, :edit] 
+
   # GET /bets
   # GET /bets.json
   def index
@@ -47,7 +51,7 @@ class BetsController < ApplicationController
         format.html { redirect_to @bet, notice: 'Bet was successfully created.' }
         format.json { render json: @bet, status: :created, location: @bet }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", alert: 'You must enter a valid name and email address.' }
         format.json { render json: @bet.errors, status: :unprocessable_entity }
       end
     end

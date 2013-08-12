@@ -1,8 +1,7 @@
 class Bet < ActiveRecord::Base
   attr_accessible :details, :email, :name, :reminder, :sent
 
-  validates :email, :presence => true
-  validates :name, :presence => true
+  validates_presence_of :name, :email
 
   # Sends user a reminder if current_date is equal to the reminder date of the bet
   def check_bet(bet)
