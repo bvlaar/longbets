@@ -23,6 +23,9 @@ Longbets::Application.configure do
   # To get devise working on Heroku deployment
   config.assets.initialize_on_precompile = false
 
+  # Google Analytics UA number
+  GA.tracker = "UA-43091789-1"
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 

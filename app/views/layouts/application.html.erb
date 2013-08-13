@@ -2,12 +2,15 @@
 <html>
 <head>
   <title>Longbets</title>
+  <meta name="description" content="A free bet reminder tool!">
+  <meta name="author" content="Brandon Vlaar">
    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= analytics_init if Rails.env.production? %>
   <%= csrf_meta_tags %>
 </head>
 <body>

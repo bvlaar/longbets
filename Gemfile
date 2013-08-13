@@ -24,6 +24,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'google-analytics-rails'
 
 
 # To use ActiveModel has_secure_password
