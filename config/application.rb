@@ -53,6 +53,9 @@ module Longbets
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
+    # To get devise working on Heroku deployment
+    config.assets.initialize_on_precompile = false
+
     # Enable the asset pipeline
     config.assets.enabled = true
     # config.assets.initialize_on_precompile = false
