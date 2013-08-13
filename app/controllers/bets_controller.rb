@@ -1,7 +1,7 @@
 class BetsController < ApplicationController
 
   # Ensure admin is logged in to view index
-  before_filter :check_privileges!, only: [:index, :show, :edit] 
+  before_filter :check_privileges!, only: [:index] 
 
   # GET /bets
   # GET /bets.json
