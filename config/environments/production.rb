@@ -20,6 +20,9 @@ Longbets::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  # To get devise working on Heroku deployment
+  config.assets.initialize_on_precompile = false
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
